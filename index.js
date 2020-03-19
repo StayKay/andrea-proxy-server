@@ -2,13 +2,25 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const axios = require("axios");
+
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/", (req, res) => {
-  axios.get("http://localhost:3000/api/reviews/1").then(result => {
-    console.log(result);
-    res.send(result.data);
-  });
+// app.get("/api/reviews/1", (req, res) => {
+//   console.log("request received");
+//   axios.get("http://localhost:3000/api/reviews/1").then(result => {
+//     console.log(result);
+//     res.send(result.data);
+//   });
+// });
+
+app.get("/api/reviews/:locationId", async (req, res) => {
+  const { locationId } = req.params;
+  await axios
+    .get(`http://localhost:3000/api/reviews/${locationId}`)
+    .then(result => {
+      res.send(result.data);
+    });
+  res.end();
 });
 
 app.listen(4040, () => {
