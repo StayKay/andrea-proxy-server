@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const axios = require("axios");
+const { createProxyMiddleware } = require("http-proxy-middleware");
+const { route } = require("./config.json");
+// const proxy = require("http-proxy-middleware");
 
 app.use(express.static(path.join(__dirname, "/public")));
 
@@ -40,7 +43,21 @@ app.get("/api/reserve/dates/:check:out", async (req, res) => {
     });
 });
 
-// app.post("/api/reserve/book/:locationId", async (req, res) => {}); // idk how to do this one
+// app.use(
+//   "/api/reserve/:locationid",
+//   createProxyMiddleware({
+//     target: "http://localhost:3002",
+//     changeOrigin: true
+//   })
+// );
+
+// app.use(
+//   "/api/reserve/dates/:check:out",
+//   createProxyMiddleware({
+//     target: "http://localhost:3002",
+//     changeOrigin: true
+//   })
+// );
 
 app.listen(4040, () => {
   console.log("Listening on 4040");
