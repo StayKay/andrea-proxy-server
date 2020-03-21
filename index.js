@@ -2,9 +2,6 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const axios = require("axios");
-const { createProxyMiddleware } = require("http-proxy-middleware");
-const { route } = require("./config.json");
-// const proxy = require("http-proxy-middleware");
 
 app.use(express.static(path.join(__dirname, "/public")));
 

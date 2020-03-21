@@ -1,4 +1,19 @@
+@import url("https://fonts.googleapis.com/css?family=Inter|Open+Sans&display=swap");
+
+body {
+  font-family: Inter;
+}
+
 #reserve {
   margin: 20px 170px 20px 730px;
   font-size: 20px;
+}
+
+div.progress-bar {
+  background-color: rgb(175, 169, 169);
+}
+
+span.rating-titles {
+  font-size: 15px;
+  font-weight: 400;
 }
