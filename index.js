@@ -40,21 +40,18 @@ app.get("/api/reserve/dates/:check:out", async (req, res) => {
     });
 });
 
-// app.use(
-//   "/api/reserve/:locationid",
-//   createProxyMiddleware({
-//     target: "http://localhost:3002",
-//     changeOrigin: true
-//   })
-// );
-
-// app.use(
-//   "/api/reserve/dates/:check:out",
-//   createProxyMiddleware({
-//     target: "http://localhost:3002",
-//     changeOrigin: true
-//   })
-// );
+app.get("/photogallery", async (req, res) => {
+  await axios
+    .get("http://localhost:3001/photogallery")
+    .then(result => {
+      res.send(result.data);
+    })
+    .catch(err => {
+      if (err) {
+        throw err;
+      }
+    });
+});
 
 app.listen(4040, () => {
   console.log("Listening on 4040");

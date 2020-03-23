@@ -5,7 +5,7 @@ body {
 }
 
 #reserve {
-  margin: 20px 170px 20px 730px;
+  margin: 20px 491px 20px 994px;
   font-size: 20px;
 }
 
@@ -16,4 +16,19 @@ div.progress-bar {
 span.rating-titles {
   font-size: 15px;
   font-weight: 400;
+}
+
+#check-in,
+#check-out {
+  font-size: 20px;
+}
+
+#guest-count {
+  font-size: 17px;
+}
+
+.photo-gallery {
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 3%;
 }
