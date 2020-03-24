@@ -29,15 +29,31 @@ app.get("/api/reserve/:locationId", async (req, res) => {
 });
 
 app.get("/api/reserve/dates/:check:out", async (req, res) => {
-  const { out } = req.params;
+  const { check, out } = req.params;
   await axios
-    .get(`http://localhost:3002/api/reserve/dates/${out}`)
+    .get(`http://localhost:3002/api/reserve/dates/:${check}:${out}`)
     .then(result => {
-      res.send(result.data);
+      res.json(result.data);
     })
     .catch(err => {
       if (err) throw err;
     });
+});
+
+app.post("/api/reserve/book/:locationId", async (req, res) => {
+  console.log(req);
+  // const dates = req.body.dates;
+  // await axios
+  //   .post(`http://localhost:3002/api/reserve/book/:${locationId}`, {
+  //     dates,
+  //     locationId
+  //   })
+  //   .then(() => {
+  //     res.end();
+  //   })
+  //   .catch(err => {
+  //     if (err) throw err;
+  //   });
 });
 
 app.get("/photogallery", async (req, res) => {

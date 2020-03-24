@@ -5,8 +5,14 @@ body {
 }
 
 #reserve {
-  margin: 20px 491px 20px 994px;
+  margin: 20px 520px 16px 995px;
   font-size: 20px;
+  float: right;
+}
+
+.main {
+  min-height: 400px;
+  width: 330px;
 }
 
 div.progress-bar {
@@ -31,4 +37,17 @@ span.rating-titles {
   margin-left: 25%;
   margin-right: 25%;
   margin-top: 3%;
+}
+
+div.guest-dropdown {
+  font-size: 17px;
+}
+
+.dropdown,
+.dropleft,
+.dropright,
+.dropup {
+  position: relative;
+  width: 700px;
+  margin: 0px 0px 0px -180px;
 }
