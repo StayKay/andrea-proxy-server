@@ -4,6 +4,8 @@ const path = require("path");
 const axios = require("axios");
 
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get("/api/reviews/:locationId", async (req, res) => {
   const { locationId } = req.params;
@@ -29,18 +31,44 @@ app.get("/api/reserve/:locationId", async (req, res) => {
 });
 
 app.get("/api/reserve/dates/:check:out", async (req, res) => {
-  const { out } = req.params;
+  const { check, out } = req.params;
   await axios
-    .get(`http://localhost:3002/api/reserve/dates/${out}`)
+    .get(`http://localhost:3002/api/reserve/dates/:${check}:${out}`)
     .then(result => {
-      res.send(result.data);
+      res.json(result.data);
     })
     .catch(err => {
       if (err) throw err;
     });
 });
 
-// app.post("/api/reserve/book/:locationId", async (req, res) => {}); // idk how to do this one
+app.post("/api/reserve/book/:locationId", async (req, res) => {
+  const { dates, locationId } = req.body;
+  await axios
+    .post(`http://localhost:3002/api/reserve/book/:${locationId}`, {
+      dates,
+      locationId
+    })
+    .then(() => {
+      res.end();
+    })
+    .catch(err => {
+      if (err) throw err;
+    });
+});
+
+app.get("/photogallery", async (req, res) => {
+  await axios
+    .get("http://localhost:3001/photogallery")
+    .then(result => {
+      res.send(result.data);
+    })
+    .catch(err => {
+      if (err) {
+        throw err;
+      }
+    });
+});
 
 app.listen(4040, () => {
   console.log("Listening on 4040");

@@ -21,5 +21,9 @@
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "http-proxy-middleware": "^1.0.3"
   }
 }
