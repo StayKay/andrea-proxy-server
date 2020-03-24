@@ -4,6 +4,10 @@ body {
   font-family: Inter;
 }
 
+#root {
+  margin-right: 400px;
+}
+
 #reserve {
   margin: 20px 520px 16px 995px;
   font-size: 20px;

@@ -4,6 +4,8 @@ const path = require("path");
 const axios = require("axios");
 
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get("/api/reviews/:locationId", async (req, res) => {
   const { locationId } = req.params;
@@ -41,19 +43,18 @@ app.get("/api/reserve/dates/:check:out", async (req, res) => {
 });
 
 app.post("/api/reserve/book/:locationId", async (req, res) => {
-  console.log(req);
-  // const dates = req.body.dates;
-  // await axios
-  //   .post(`http://localhost:3002/api/reserve/book/:${locationId}`, {
-  //     dates,
-  //     locationId
-  //   })
-  //   .then(() => {
-  //     res.end();
-  //   })
-  //   .catch(err => {
-  //     if (err) throw err;
-  //   });
+  const { dates, locationId } = req.body;
+  await axios
+    .post(`http://localhost:3002/api/reserve/book/:${locationId}`, {
+      dates,
+      locationId
+    })
+    .then(() => {
+      res.end();
+    })
+    .catch(err => {
+      if (err) throw err;
+    });
 });
 
 app.get("/photogallery", async (req, res) => {
