@@ -71,5 +71,5 @@ app.get("/photogallery", async (req, res) => {
 });
 
 app.listen(4040, () => {
-  console.log("Listening on 4040");
+  console.log("Listening on http://localhost:4040");
 });
