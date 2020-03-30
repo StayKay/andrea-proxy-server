@@ -3,9 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="http://localhost:3000/style.css" />
-    <link rel="stylesheet" href="http://localhost:3002/calendar.css" />
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="http://localhost:3000/style.css" /> -->
+    <link
+      rel="stylesheet"
+      href="http://ec2-18-224-183-60.us-east-2.compute.amazonaws.com:3002/calendar.css"
+    />
+    <link
+      rel="stylesheet"
+      href="http://ec2-52-53-252-70.us-west-1.compute.amazonaws.com:3000/style.css"
+    />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <title>Proxy Server</title>
   </head>
   <body>
@@ -17,23 +24,20 @@
       crossorigin
       src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
     ></script>
-
+    <!--
     <div id="root"></div>
     <script
       type="text/javascript"
       src="http://localhost:3001/dist/bundle.js"
     ></script>
-
+    -->
     <div id="reserve"></div>
     <script
       type="text/javascript"
-      src="http://localhost:3002/dist/bundle.js"
+      src="http://ec2-18-224-183-60.us-east-2.compute.amazonaws.com:3002/dist/bundle.js"
     ></script>
 
     <div id="reviews-here"></div>
-    <script
-      type="text/javascript"
-      src="http://localhost:3000/dist/bundle.js"
-    ></script>
+    <script src="http://ec2-52-53-252-70.us-west-1.compute.amazonaws.com:3000/dist/bundle.js"></script>
   </body>
 </html>
