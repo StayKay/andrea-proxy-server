@@ -10,7 +10,9 @@ app.use(express.json());
 app.get("/api/reviews/:locationId", async (req, res) => {
   const { locationId } = req.params;
   await axios
-    .get(`http://localhost:3000/api/reviews/${locationId}`)
+    .get(
+      `http://ec2-52-53-252-70.us-west-1.compute.amazonaws.com:3000/api/reviews/5`
+    )
     .then(result => {
       res.send(result.data);
     });
@@ -20,7 +22,9 @@ app.get("/api/reviews/:locationId", async (req, res) => {
 app.get("/api/reserve/:locationId", async (req, res) => {
   const { locationId } = req.params;
   await axios
-    .get(`http://localhost:3002/api/reserve/${locationId}`)
+    .get(
+      `http://ec2-18-224-183-60.us-east-2.compute.amazonaws.com:3002/api/reserve/${locationId}`
+    )
     .then(result => {
       res.send(result.data);
     })
@@ -33,7 +37,9 @@ app.get("/api/reserve/:locationId", async (req, res) => {
 app.get("/api/reserve/dates/:check:out", async (req, res) => {
   const { check, out } = req.params;
   await axios
-    .get(`http://localhost:3002/api/reserve/dates/:${check}:${out}`)
+    .get(
+      `http://ec2-18-224-183-60.us-east-2.compute.amazonaws.com:3002/api/reserve/dates/:${check}:${out}`
+    )
     .then(result => {
       res.json(result.data);
     })
@@ -42,33 +48,36 @@ app.get("/api/reserve/dates/:check:out", async (req, res) => {
     });
 });
 
-app.post("/api/reserve/book/:locationId", async (req, res) => {
-  const { dates, locationId } = req.body;
-  await axios
-    .post(`http://localhost:3002/api/reserve/book/:${locationId}`, {
-      dates,
-      locationId
-    })
-    .then(() => {
-      res.end();
-    })
-    .catch(err => {
-      if (err) throw err;
-    });
-});
+app.post(
+  "http://ec2-18-224-183-60.us-east-2.compute.amazonaws.com:3002/api/reserve/book/:locationId",
+  async (req, res) => {
+    const { dates, locationId } = req.body;
+    await axios
+      .post(`http://localhost:3002/api/reserve/book/:${locationId}`, {
+        dates,
+        locationId
+      })
+      .then(() => {
+        res.end();
+      })
+      .catch(err => {
+        if (err) throw err;
+      });
+  }
+);
 
-app.get("/photogallery", async (req, res) => {
-  await axios
-    .get("http://localhost:3001/photogallery")
-    .then(result => {
-      res.send(result.data);
-    })
-    .catch(err => {
-      if (err) {
-        throw err;
-      }
-    });
-});
+// app.get("/photogallery", async (req, res) => {
+//   await axios
+//     .get("http://localhost:3001/photogallery")
+//     .then(result => {
+//       res.send(result.data);
+//     })
+//     .catch(err => {
+//       if (err) {
+//         throw err;
+//       }
+//     });
+// });
 
 app.listen(4040, () => {
   console.log("Listening on http://localhost:4040");
