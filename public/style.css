@@ -10,12 +10,12 @@
 #sectional-portion {
   display: flex;
 }
-/*
-#root {
-  margin-bottom: 15px;
-} */
 
 .photo-gallery {
   margin-left: 15%;
   margin-right: 15%;
+}
+
+div#root {
+  margin-bottom: -11%;
 }
